@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import fileupload from "express-fileupload";
 
 import router from "./router.js";
 
@@ -9,6 +10,8 @@ const DB_URL = "mongodb://127.0.0.1:27017/db1";
 const app = express();
 
 app.use(express.json());
+app.use(express.static("static"));
+app.use(fileupload({}));
 app.use("/api", router);
 
 const start = async () => {
